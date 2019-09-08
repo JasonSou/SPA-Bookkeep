@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "book-keepping": {
+    "book-keeping": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/book-keepping",
+            "outputPath": "dist/book-keeping",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -31,7 +31,10 @@
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -63,20 +66,20 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "book-keepping:build",
+            "browserTarget": "book-keeping:build",
             "proxyConfig": "src/proxy.conf.json",
             "aot": true
           },
           "configurations": {
             "production": {
-              "browserTarget": "book-keepping:build:production"
+              "browserTarget": "book-keeping:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "book-keepping:build"
+            "browserTarget": "book-keeping:build"
           }
         },
         "test": {
@@ -114,15 +117,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "book-keepping:serve"
+            "devServerTarget": "book-keeping:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "book-keepping:serve:production"
+              "devServerTarget": "book-keeping:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "book-keepping"
+  "defaultProject": "book-keeping"
 }

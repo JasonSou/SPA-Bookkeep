@@ -1,21 +1,54 @@
 <div class="container">
-    <table class="table">
+    <h3>
+        Monthly Bookkeeping <small *ngIf="keeping">{{ keeping.date }} </small>
+    </h3>
+    <table class="table" *ngIf="keeping">
         <tbody>
             <tr>
-                <th>Date</th>
-                <td>{{ date }}</td>
-            </tr>
-            <tr>
-                <th>Unit Price of Electric</th>
-                <td>{{ eleUnit }}</td>
+                <th>Unit Price of Eletric</th>
+                <td>{{ keeping.eleUnit }}</td>
             </tr>
             <tr>
                 <th>Unit Price of Water</th>
-                <td>{{ waterUnit }}</td>
+                <td>{{ keeping.waterUnit }}</td>
             </tr>
             <tr>
                 <th>Unit Price of Air</th>
-                <td>{{ airUnit }}</td>
+                <td>{{ keeping.airUnit }}</td>
+            </tr>
+
+            <tr>
+                <th>Usage of Eletric</th>
+                <td>{{ keeping.electricUsage }}</td>
+            </tr>            
+            <tr>
+                <th>Usage of Water</th>
+                <td>{{ keeping.waterUsage }}</td>
+            </tr>            
+            <tr>
+                <th>Usage of Air</th>
+                <td>{{ keeping.airUsage }}</td>
+            </tr>   
+                     
+            <tr>
+                <th>Cost of ELectric</th>
+                <td>{{ keeping.eleCharge }}</td>
+            </tr>
+            <tr>
+                <th>Cost of Water</th>
+                <td>{{ keeping.waterCharge }}</td>
+            </tr>
+            <tr>
+                <th>Cost of Air</th>
+                <td>{{ keeping.airCharge }}</td>
+            </tr>
+            <tr>
+                <th>Cost of Other</th>
+                <td>{{ keeping.otherCharge }}</td>
+            </tr>
+            <tr>
+                <th>Total Cost</th>
+                <td>{{ keeping.totalCharge }}</td>
             </tr>
         </tbody>
     </table>

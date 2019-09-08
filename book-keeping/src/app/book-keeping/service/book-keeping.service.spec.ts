@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BookKeeppingService } from './book-keeping.service';
+import { BookKeepingService } from './book-keeping.service';
 
-describe('BookKeeppingService', () => {
+describe('BookKeepingService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: BookKeeppingService = TestBed.get(BookKeeppingService);
+    const service: BookKeepingService = TestBed.get(BookKeepingService);
     expect(service).toBeTruthy();
   });
 });

@@ -12,31 +12,33 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class BookKeeppingService {
+export class BookKeepingService {
 
-  private keeppingAPI = "/api/keepping/";
+  private keepingAPI = "/api/keeping";
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getChargeKeeppings(): Observable<Keeping[]> {
-    return this.http.get<Keeping[]>(this.keeppingAPI, httpOptions)
+  getChargeKeepings(): Observable<Keeping[]> {
+    const url = `${this.keepingAPI}`;
+    return this.http.get<Keeping[]>(url, httpOptions)
   } 
 
-  getChargeKeepping(id: number): Observable<Keeping> {
-    return this.http.get<Keeping>(this.keeppingAPI + id, httpOptions);
+  getChargeKeeping(id: number): Observable<Keeping> {
+    const url = `${this.keepingAPI}/${id}`;
+    return this.http.get<Keeping>(url, httpOptions);
   }
 
-  addChargeKeepping(keepping: Keeping): Observable<Boolean> {
-    return this.http.post<Boolean>(this.keeppingAPI, keepping, httpOptions);
+  addChargeKeeping(keeping: Keeping): Observable<Boolean> {
+    return this.http.post<Boolean>(this.keepingAPI, keeping, httpOptions);
   }
 
-  editChargeKeepping(keeping: Keeping): Observable<Keeping> {
-    return this.http.put<Keeping>(this.keeppingAPI, keeping, httpOptions);
+  editChargeKeeping(keeping: Keeping): Observable<Keeping> {
+    return this.http.put<Keeping>(this.keepingAPI, keeping, httpOptions);
   }
 
-  deleteChargeKeepping(id: number ): Observable<Boolean> {
-    return this.http.delete<Boolean>(this.keeppingAPI + id, httpOptions)
+  deleteChargeKeeping(id: number ): Observable<Boolean> {
+    return this.http.delete<Boolean>(this.keepingAPI + id, httpOptions)
   }
 }

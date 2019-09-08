@@ -1,13 +1,13 @@
 
 <div class="container">
-    <h3 class="container">
+    <h3>
         <span>List Monthly Bookkeeping</span>
     </h3>
     <table class="table">
         <thead>
             <tr>
                 <th>Date</th>
-                <th>Ele</th>
+                <th>Eletric</th>
                 <th>Water</th>
                 <th>Air</th>
                 <th>Other</th>
@@ -23,7 +23,7 @@
                 <td>{{ item.airCharge }}</td>
                 <td>{{ item.otherCharge }}</td>
                 <td>{{ item.totalCharge }}</td>
-                <td><button routerLink="/detail/{{item.id}}" type="button" class="btn btn-info">Check</button></td>
+                <td><button [routerLink]="['detail/', item.id]" type="button" class="btn btn-info">Check</button></td>
             </tr>
         </tbody>
     </table>

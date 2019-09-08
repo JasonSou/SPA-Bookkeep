@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BookKeeppingService } from './service/book-keeping.service';
+import { BookKeepingService } from './service/book-keeping.service';
 import { Keeping } from './book-keeping';
 
 @Component({
@@ -12,16 +12,16 @@ export class BookKeepingComponent implements OnInit {
 
   bookkeepings: Keeping[];
 
-  constructor(private service: BookKeeppingService) { 
+  constructor(private service: BookKeepingService) { 
   }
 
   ngOnInit() {
-    this.getKeeppings();
+    this.getKeepings();
   }
 
-  getKeeppings(): void {
-    this.service.getChargeKeeppings()
-      .subscribe( (keeppings: Keeping[]) => this.bookkeepings = keeppings)
+  getKeepings(): void {
+    this.service.getChargeKeepings()
+      .subscribe((keepings: Keeping[]) => this.bookkeepings = keepings)
   }
 
 }
