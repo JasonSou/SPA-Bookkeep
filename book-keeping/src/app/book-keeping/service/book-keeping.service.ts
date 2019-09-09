@@ -30,8 +30,8 @@ export class BookKeepingService {
     return this.http.get<Keeping>(url, httpOptions);
   }
 
-  addChargeKeeping(keeping: Keeping): Observable<Boolean> {
-    return this.http.post<Boolean>(this.keepingAPI, keeping, httpOptions);
+  addChargeKeeping(keeping: Keeping): Observable<number> {
+    return this.http.post<number>(this.keepingAPI, keeping, httpOptions);
   }
 
   editChargeKeeping(keeping: Keeping): Observable<Keeping> {
