@@ -24,41 +24,44 @@
         </div>
         <br>
         <label for="electricScalar">Scalar of Eletric</label>
-        <input type="number" class="form-control" id="electricScalar" placeholder="" formControlName="electricScalar"
+        <input type="number" class="form-control" id="electricScalar" (change)="getUsage($event)" placeholder="" formControlName="electricScalar"
             required>
 
         <label for="waterScalar">Scalar of Water</label>
-        <input type="number" class="form-control" id="waterScalar" placeholder="" formControlName="waterScalar"
+        <input type="number" class="form-control" id="waterScalar" (change)="getUsage($event)" placeholder="" formControlName="waterScalar"
             required>
 
         <label for="airScalar">Scalar of Air</label>
-        <input type="number" class="form-control" id="airScalar" (ngModelChange)="getUsage($event, id)" placeholder="" formControlName="airScalar" required>
+        <input type="number" class="form-control" id="airScalar" (change)="getUsage($event)" placeholder="" formControlName="airScalar" required>
+        
         <br>
-        <label for="electricUsage">Usage of Air</label>
-        <input type="number" class="form-control" id="electricUsage" placeholder="" formControlName="electricUsage">
 
-        <label for="waterUsage">Usage of Air</label>
-        <input type="number" class="form-control" id="waterUsage" placeholder="" formControlName="waterUsage">
+        <label for="electricUsage">Usage of Electric</label>
+        <input type="number" class="form-control" id="electricUsage" (change)="getCharge()"  placeholder="" formControlName="electricUsage">
+
+        <label for="waterUsage">Usage of Water</label>
+        <input type="number" class="form-control" id="waterUsage" (change)="getCharge()"  placeholder="" formControlName="waterUsage">
 
         <label for="airUsage">Usage of Air</label>
-        <input type="number" class="form-control" id="airUsage" placeholder="" formControlName="airUsage">
-
+        <input type="number" class="form-control" id="airUsage" (change)="getCharge()"  placeholder="" formControlName="airUsage">
+        
         <br>
-        <label for="eleCharge">Other Cost</label>
+
+        <label for="eleCharge">Eletric Cost</label>
         <input type="number" class="form-control" id="eleCharge" placeholder="" formControlName="eleCharge" required>
 
-        <label for="waterCharge">Other Cost</label>
+        <label for="waterCharge">Water Cost</label>
         <input type="number" class="form-control" id="waterCharge" placeholder="" formControlName="waterCharge"
             required>
 
-        <label for="airCharge">Other Cost</label>
+        <label for="airCharge">Air Cost</label>
         <input type="number" class="form-control" id="airCharge" placeholder="" formControlName="airCharge" required>
 
         <label for="otherCharge">Other Cost</label>
-        <input type="number" class="form-control" id="otherCharge" placeholder="" formControlName="otherCharge"
+        <input type="number" class="form-control" id="otherCharge" (change)="getCharge()"  placeholder="" formControlName="otherCharge"
             required>
 
-        <label for="totalCharge">Other Cost</label>
+        <label for="totalCharge">Total Cost</label>
         <input type="number" class="form-control" id="totalCharge" placeholder="" formControlName="totalCharge"
             required>
 

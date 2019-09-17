@@ -48,8 +48,35 @@ export class BookKeepingFormComponent implements OnInit {
       .subscribe(keeping => this.lastKeeping = keeping);
   }
 
-  getUsage(event, a) {
-    console.log(event, a)
+  // TODO: onEvent in angular
+  getUsage(event) {
+    const id = event.target.id;
+    const val = event.target.value;
+    switch(id) {
+      case 'electricScalar':
+        this.recordForm.patchValue({'electricUsage': Number(val) - this.lastKeeping.electricScalar} ); break;
+      case 'waterScalar':
+        this.recordForm.patchValue({'waterUsage': Number(val) - this.lastKeeping.waterScalar} );break;
+      case 'airScalar':
+        this.recordForm.patchValue({'airUsage': Number(val) - this.lastKeeping.airScalar} );break;
+    }
+    this.getCharge();
+
+  }
+
+  getCharge() {
+    let formValue = this.recordForm.value;
+    let eleCharge = Number(formValue.eleUnit * formValue.electricUsage);
+    let waterCharge = Number(formValue.waterUnit * formValue.waterUsage);
+    let airCharge = Number(formValue.airUnit * formValue.airUsage);
+    let otherCharge = Number(formValue.otherCharge);
+    let totalCharge = eleCharge + waterCharge + airCharge + otherCharge;
+    this.recordForm.patchValue({
+      'eleCharge': Math.round(eleCharge),
+      'waterCharge': Math.round(waterCharge),
+      'airCharge': Math.round(airCharge),
+      'totalCharge': Math.round(totalCharge)
+  })
   }
 
 
