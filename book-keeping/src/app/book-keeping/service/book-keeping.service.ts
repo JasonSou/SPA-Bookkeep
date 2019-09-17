@@ -41,4 +41,10 @@ export class BookKeepingService {
   deleteChargeKeeping(id: number ): Observable<Boolean> {
     return this.http.delete<Boolean>(this.keepingAPI + id, httpOptions)
   }
+
+  getLastKeeping(): Observable<Keeping> {
+    const url = `${this.keepingAPI}/last`;
+    return this.http.get<Keeping>(url, httpOptions);
+  }
+
 }

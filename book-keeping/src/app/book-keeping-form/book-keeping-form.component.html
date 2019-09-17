@@ -1,57 +1,75 @@
 <div class="container">
     <h3>Add Bookkeeping Record</h3>
+    <p>
+        Last Date <span *ngIf="lastKeeping">{{ lastKeeping.date }}</span>
+    </p>
     <form [formGroup]="recordForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date" required >
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date today" formControlName="date" required>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
+
             <br>
             <label for="eleUnit">Unit Price of Eletric</label>
-            <input type="number" class="form-control" id="eleUnit" placeholder="" formControlName="eleUnit" required >
-  
+            <input type="number" class="form-control" id="eleUnit" placeholder="" formControlName="eleUnit" required>
+
             <label for="waterUnit">Unit Price of Water</label>
-            <input type="number" class="form-control" id="waterUnit" placeholder="" formControlName="waterUnit" required>
+            <input type="number" class="form-control" id="waterUnit" placeholder="" formControlName="waterUnit"
+                required>
 
             <label for="airUnit">Unit Price of Air</label>
             <input type="number" class="form-control" id="airUnit" placeholder="" formControlName="airUnit" required>
         </div>
         <br>
-            <label for="electricUsage">Usage of Eletric</label>
-            <input type="number" class="form-control" id="electricUsage" placeholder="" formControlName="electricUsage" required>
- 
-            <label for="waterUsage">Usage of Water</label>
-            <input type="number" class="form-control" id="waterUsage" placeholder="" formControlName="waterUsage" required>
+        <label for="electricScalar">Scalar of Eletric</label>
+        <input type="number" class="form-control" id="electricScalar" placeholder="" formControlName="electricScalar"
+            required>
 
-            <label for="airUsage">Usage of Air</label>
-            <input type="number" class="form-control" id="airUsage" placeholder="" formControlName="airUsage" required>
+        <label for="waterScalar">Scalar of Water</label>
+        <input type="number" class="form-control" id="waterScalar" placeholder="" formControlName="waterScalar"
+            required>
+
+        <label for="airScalar">Scalar of Air</label>
+        <input type="number" class="form-control" id="airScalar" (ngModelChange)="getUsage($event, id)" placeholder="" formControlName="airScalar" required>
         <br>
-            <label for="otherCharge">Other Cost</label>
-            <input type="number" class="form-control" id="otherCharge" placeholder="" formControlName="otherCharge" required>
+        <label for="electricUsage">Usage of Air</label>
+        <input type="number" class="form-control" id="electricUsage" placeholder="" formControlName="electricUsage">
+
+        <label for="waterUsage">Usage of Air</label>
+        <input type="number" class="form-control" id="waterUsage" placeholder="" formControlName="waterUsage">
+
+        <label for="airUsage">Usage of Air</label>
+        <input type="number" class="form-control" id="airUsage" placeholder="" formControlName="airUsage">
+
         <br>
-        
+        <label for="eleCharge">Other Cost</label>
+        <input type="number" class="form-control" id="eleCharge" placeholder="" formControlName="eleCharge" required>
+
+        <label for="waterCharge">Other Cost</label>
+        <input type="number" class="form-control" id="waterCharge" placeholder="" formControlName="waterCharge"
+            required>
+
+        <label for="airCharge">Other Cost</label>
+        <input type="number" class="form-control" id="airCharge" placeholder="" formControlName="airCharge" required>
+
+        <label for="otherCharge">Other Cost</label>
+        <input type="number" class="form-control" id="otherCharge" placeholder="" formControlName="otherCharge"
+            required>
+
+        <label for="totalCharge">Other Cost</label>
+        <input type="number" class="form-control" id="totalCharge" placeholder="" formControlName="totalCharge"
+            required>
+
+
+        <br>
+
         <button type="submit" class="btn btn-primary" [disabled]="!recordForm.valid">Save</button>
 
     </form>
-    <table class="table">
-        <tr>
-            <th>Eletric Cost</th>
-            <td>{{ eleCharge }}</td>
-        </tr>
-        <tr>
-            <th>Water Cost</th>
-            <td>{{ waterCharge }}</td>
-        </tr>
-        <tr>
-            <th>Air Cost</th>
-            <td>{{ airCharge }}</td>
-        </tr>
-        <tr>
-            <th>Total Cost</th>
-            <td>{{ totalCharge }}</td>
-        </tr>
-    </table>
+    <p>
+        <span></span>
+    </p>
 
 </div>
-

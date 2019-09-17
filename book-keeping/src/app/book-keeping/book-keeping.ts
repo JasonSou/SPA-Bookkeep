@@ -6,6 +6,10 @@ export interface Keeping {
     waterUnit: number;
     airUnit: number;
   
+    electricScalar: number;
+    waterScalar: number;
+    airScalar: number;
+
     electricUsage: number;
     waterUsage: number;
     airUsage: number;

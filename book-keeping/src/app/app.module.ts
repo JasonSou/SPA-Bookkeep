@@ -12,6 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatDatepickerModule, MatFormFieldModule, MatInputModule, MatRippleModule, MatNativeDateModule } from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatRippleModule,
     MatDatepickerModule,
     MatNativeDateModule, 
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
