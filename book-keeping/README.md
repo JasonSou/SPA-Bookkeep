@@ -2,6 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
+# Function
+Angular:
+  1. Event
+  2. Reused component
+  3. Adapt to mobile
+Auth: 
+  1. OAuth2.0
+  2. Wechat
+  3. How to combine backend API auth 
+Pageing:
+Graphic Chart:
+All Site Searching:
+
+Backend Support：
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
