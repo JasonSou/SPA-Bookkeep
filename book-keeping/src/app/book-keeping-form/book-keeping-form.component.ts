@@ -40,7 +40,9 @@ export class BookKeepingFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.warn(this.recordForm.value);
+    this.service.addChargeKeeping(this.recordForm.value)
+      .subscribe( mes => console.log(mes))
+      // ToDo: alert message wheather success or not 
   }
 
   getLastKeeping() {
@@ -52,14 +54,17 @@ export class BookKeepingFormComponent implements OnInit {
   getUsage(event) {
     const id = event.target.id;
     const val = event.target.value;
-    switch(id) {
-      case 'electricScalar':
-        this.recordForm.patchValue({'electricUsage': Number(val) - this.lastKeeping.electricScalar} ); break;
-      case 'waterScalar':
-        this.recordForm.patchValue({'waterUsage': Number(val) - this.lastKeeping.waterScalar} );break;
-      case 'airScalar':
-        this.recordForm.patchValue({'airUsage': Number(val) - this.lastKeeping.airScalar} );break;
+    if(this.lastKeeping) {
+      switch(id) {
+        case 'electricScalar':
+          this.recordForm.patchValue({'electricUsage': Number(val) - this.lastKeeping.electricScalar} ); break;
+        case 'waterScalar':
+          this.recordForm.patchValue({'waterUsage': Number(val) - this.lastKeeping.waterScalar} );break;
+        case 'airScalar':
+          this.recordForm.patchValue({'airUsage': Number(val) - this.lastKeeping.airScalar} );break;
+      }
     }
+    
     this.getCharge();
 
   }

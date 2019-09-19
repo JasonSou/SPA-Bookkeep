@@ -30,16 +30,18 @@ export class BookKeepingService {
     return this.http.get<Keeping>(url, httpOptions);
   }
 
-  addChargeKeeping(keeping: Keeping): Observable<number> {
-    return this.http.post<number>(this.keepingAPI, keeping, httpOptions);
+  addChargeKeeping(keeping: Keeping): Observable<JSON> {
+    const url = `${this.keepingAPI}`;
+    return this.http.post<JSON>(url, keeping, httpOptions);
   }
 
   editChargeKeeping(keeping: Keeping): Observable<Keeping> {
     return this.http.put<Keeping>(this.keepingAPI, keeping, httpOptions);
   }
 
-  deleteChargeKeeping(id: number ): Observable<Boolean> {
-    return this.http.delete<Boolean>(this.keepingAPI + id, httpOptions)
+  deleteChargeKeeping(id: number ): Observable<JSON> {
+    const url = `${this.keepingAPI}/${id}`;
+    return this.http.delete<JSON>(url, httpOptions)
   }
 
   getLastKeeping(): Observable<Keeping> {

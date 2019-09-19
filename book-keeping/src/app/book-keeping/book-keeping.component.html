@@ -17,13 +17,17 @@
         </thead>
         <tbody>
             <tr *ngFor="let item of bookkeepings">
-                <td>{{ item.date }}</td>
-                <td>{{ item.eleCharge }}</td>
-                <td>{{ item.waterCharge }}</td>
-                <td>{{ item.airCharge }}</td>
-                <td>{{ item.otherCharge }}</td>
-                <td>{{ item.totalCharge }}</td>
-                <td><button [routerLink]="['detail/', item.id]" type="button" class="btn btn-info">Check</button></td>
+                <td *ngIf="item">{{ item.date }}</td>
+                <td *ngIf="item">{{ item.eleCharge }}</td>
+                <td *ngIf="item">{{ item.waterCharge }}</td>
+                <td *ngIf="item">{{ item.airCharge }}</td>
+                <td *ngIf="item">{{ item.otherCharge }}</td>
+                <td *ngIf="item">{{ item.totalCharge }}</td>
+                <td *ngIf="item">
+                    <button [routerLink]="['detail/', item.id]" type="button" class="btn btn-info btn-sm">Check</button>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="deleteKeeping(item.id)">del</button>
+                </td>
+
             </tr>
         </tbody>
     </table>

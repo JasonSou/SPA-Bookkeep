@@ -24,4 +24,23 @@ export class BookKeepingComponent implements OnInit {
       .subscribe((keepings: Keeping[]) => this.bookkeepings = keepings)
   }
 
+  deleteKeeping(id: number): void {
+    // ToDo: 1. angular event learning
+    // ToDo: 2. map & ?:
+    // ToDo: 3. get result id
+    this.service.deleteChargeKeeping(id)
+      .subscribe(
+        result => {
+          if(result['status'] == true){
+            for(var i=0;i<this.bookkeepings.length;i++) {
+              if(this.bookkeepings[i].id == id) {
+                delete this.bookkeepings[i]
+              }
+            }
+          }
+          
+        }
+      )
+  }
+
 }
