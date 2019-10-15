@@ -26,7 +26,7 @@
                 <td *ngIf="item">
                     <button [routerLink]="['detail/', item.id]" type="button" class="btn btn-info btn-sm">Check</button>
                     <!-- <button type="button" class="btn btn-danger btn-sm" (click)="deleteKeeping(item.id)">del</button> -->
-                    <app-dialog></app-dialog>
+                    <app-dialog [del_id]=item.id></app-dialog>
                 </td>
 
             </tr>
