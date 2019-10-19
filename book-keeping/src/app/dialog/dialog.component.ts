@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BookKeepingService } from '../book-keeping/service/book-keeping.service'
 
 export interface DialogData {
-  id: string;
+  id: number;
 }
 
 
@@ -16,18 +17,26 @@ export class DialogComponent implements OnInit {
 
   private del_id;
 
-  constructor(public dialog: MatDialog) {}
-  // toDo: pass del_id to DialogContent
+  @Output() refresh = new EventEmitter;
+
+  constructor(
+    public dialog: MatDialog,
+    ) {}
+
   openDialog() {
     const dialogRef = this.dialog.open(DialogContent, {
       width: '250px',
       height: '200px',
-      data: {id: this.del_id}
+      data: {
+        id: this.del_id
+      }
     });
 
     dialogRef.afterClosed().subscribe(
       result => {
-        // to do
+        if(result && result['status'] == true) {
+          this.refresh.emit();
+        }
       }
     );
 
@@ -40,14 +49,14 @@ export class DialogComponent implements OnInit {
 
 @Component({
   selector: 'dialog-content',
-  templateUrl: './dialog-content.html',
-  inputs: ['id']
+  templateUrl: './dialog-content.html'
 })
 export class DialogContent {
-  private id;
+
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private sevice : BookKeepingService,
   ){}
 
   onNoClick(): void {
@@ -55,7 +64,15 @@ export class DialogContent {
   }
 
   confirm(): void {
-    console.log(this.data)
+    let del_id = this.data['id']
+    this.sevice.deleteChargeKeeping(del_id)
+      .subscribe(
+        result => {
+          this.dialogRef.close(result);
+        }
+      )
+      
+    
   }
 
 }
